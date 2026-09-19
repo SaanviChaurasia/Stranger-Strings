@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d5c56" />
+    <title>NeerSath | Community water safety</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:ital,wght@0,600;0,700;1,600;1,700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="spacing.css" />
+  </head>
+  <body class="login-open">
+    <main class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+      <section class="login-brand-panel">
+        <a class="brand" href="#overview"><span class="brand-mark">⌁</span><span>Neer<span>Sath</span></span></a>
+        <div class="login-art" aria-hidden="true"><span class="login-sun"></span><span class="login-hill one"></span><span class="login-hill two"></span><span class="login-water"></span></div>
+        <div><p class="eyebrow"><i></i> COMMUNITY EARLY-WARNING SYSTEM</p><h1>Earlier signals.<br><em>Safer communities.</em></h1><p>Report concerns, see local risk signals, and support a faster public-health response.</p></div>
+      </section>
+      <section class="login-form-panel">
+        <div class="login-card" id="loginCard">
+          <p class="eyebrow"><i></i><span id="loginStepLabel">SECURE SIGN IN</span></p>
+          <h2 id="loginTitle">Welcome to NeerSath</h2>
+          <p class="login-copy" id="loginCopy">Enter your mobile number to access the community water-safety desk.</p>
+          <form id="identityForm" class="identity-form">
+            <label>Mobile number<input id="loginMobile" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" maxlength="10" required></label>
+            <button class="button primary" type="submit">Send OTP <span>→</span></button>
+          </form>
+          <form id="otpForm" class="identity-form hidden" novalidate>
+            <div class="otp-email"><span>▣</span><span id="otpDestination">Code sent to your mobile number</span></div>
+            <label>One-time password<input id="otpInput" class="otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter 6-digit OTP" required></label>
+            <p class="otp-demo">Demo OTP: <b>123456</b> <span>— no SMS is sent in this local prototype.</span></p>
+            <p class="otp-error" id="otpError" role="alert"></p>
+            <button class="button primary" type="submit">Verify and enter <span>→</span></button>
+            <button class="back-login" id="backLogin" type="button">← Change mobile number</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#overview" aria-label="NeerSath home">
+          <span class="brand-mark">⌁</span>
+          <span>Neer<span>Sath</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a class="active" href="#overview" data-section="overview" data-i18n="navOverview">Overview</a>
+          <a href="#live-desk" data-section="live-desk" data-i18n="navLiveDesk">Live situation desk</a>
+          <a href="#report" data-section="report" data-i18n="navCommunityReport">Community report issue</a>
+          <a href="#response" data-section="response" data-i18n="navResponseCenter">Response center</a>
+        </nav>
+        <button class="language" id="languageBtn" type="button" aria-label="Switch website language"><span class="language-icon">अ</span> <span id="languageLabel">हिंदी में देखें</span><span class="language-tooltip" id="languageHint">Click to switch language</span></button>
+      </header>
+
+      <main>
+        <section class="hero" id="overview">
+          <div>
+            <p class="eyebrow"><i></i><span data-i18n="eyebrow">COMMUNITY EARLY-WARNING SYSTEM</span></p>
+            <h1><span data-i18n="heroTitle">Spot the signal.</span><br /><em data-i18n="heroEmphasis">Protect the community.</em></h1>
+            <p class="hero-copy" data-i18n="heroCopy">NeerSath brings together symptom reports, unsafe-water complaints and weather signals so health workers can investigate sooner and people can be more careful regarding weather and environmental conditions.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#report"><span data-i18n="reportIssue">Report an issue</span> <span>→</span></a>
+              <button class="text-button" id="demoBtn" type="button" data-i18n="demoAlert">▶ View alert!!</button>
+            </div>
+            <p class="safety-note" data-i18n="safety">A risk-alert tool for human review — not a diagnosis or disease prediction system.</p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+            <div class="rain r1"></div><div class="rain r2"></div><div class="rain r3"></div>
+            <div class="hill h1"></div><div class="hill h2"></div><div class="water"><span></span><span></span><span></span></div>
+            <div class="alert-orb"><span class="alert-orb-title">EARLY</span><small>SIGNAL</small></div>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="live-desk" aria-labelledby="dashboard-title">
+          <div class="section-heading">
+            <div><p class="eyebrow"><i></i><span data-i18n="liveDesk">LIVE SITUATION DESK</span></p><h2 id="dashboard-title" data-i18n="dashboard">Community risk dashboard</h2></div>
+            <div class="desk-actions"><p id="lastUpdated">Updated just now · Ecological data</p><button id="exportCsv" type="button" data-i18n="exportCsv">Export CSV</button><button id="printSummary" type="button" data-i18n="savePdf">Save PDF</button></div>
+          </div>
+          <div class="dashboard-grid">
+            <div class="area-panel">
+              <div class="panel-header"><h3 data-i18n="riskByArea">Risk by service area</h3><span class="live-dot" data-i18n="live">LIVE</span></div>
+              <div id="areaCards" class="area-cards"></div>
+            </div>
+            <aside class="alert-panel" id="alertPanel">
+              <div class="alert-top"><span class="alert-icon">!</span><span data-i18n="priorityAlert">PRIORITY ALERT</span></div>
+              <p class="alert-level" id="alertLevel">CRITICAL · WARD 4</p>
+              <h3 id="alertTitle">Investigation recommended now</h3>
+              <p id="alertText">High number of GI-symptom reports following heavy rainfall and water complaints.</p>
+              <div class="alert-score"><span data-i18n="riskScore">Risk score</span><strong id="alertScore">84</strong><span id="scoreMax">/100</span></div>
+              <button class="button light" id="whyBtn" type="button"><span data-i18n="whyAlert">Why this alert?</span> <span>↓</span></button>
+            </aside>
+          </div>
+          <div class="stats-row">
+            <div><span data-i18n="reports24">24h reports</span><strong id="totalReports">25</strong><small data-i18n="sinceYesterday">+8 since yesterday</small></div>
+            <div><span data-i18n="peopleAffected">People affected</span><strong id="totalPeople">45</strong><small data-i18n="notVerified">Reported, not verified cases</small></div>
+            <div><span data-i18n="waterConcerns">Water concerns</span><strong id="waterConcerns">5</strong><small data-i18n="acrossAreas">Across 3 service areas</small></div>
+            <div><span data-i18n="areasReview">Areas needing review</span><strong id="areasReview">1</strong><small data-i18n="highCritical">High or critical risk</small></div>
+          </div>
+          <div class="insight-grid">
+            <section class="trend-card" aria-labelledby="trend-title">
+              <div class="panel-header"><div><p class="mini-label" data-i18n="trendLabel">7-DAY TREND</p><h3 id="trend-title" data-i18n="trendTitle">Symptom reports by location</h3></div><span id="trendWard">Patna, Bihar</span></div>
+              <div class="chart-wrap"><div class="chart-y"><span id="chartMax">20</span><span id="chartMid">10</span><span id="chartZero">0</span></div><div class="chart-area" id="trendChart" aria-label="Seven day symptom report trend"></div></div>
+              <div class="chart-days"><span data-i18n="mon">Mon</span><span data-i18n="tue">Tue</span><span data-i18n="wed">Wed</span><span data-i18n="thu">Thu</span><span data-i18n="fri">Fri</span><span data-i18n="sat">Sat</span><span data-i18n="sun">Sun</span></div>
+            </section>
+            <section class="ward-selector-card" aria-labelledby="ward-selector-title">
+              <div class="panel-header"><div><p class="mini-label" data-i18n="riskByArea">Risk by service area</p><h3 id="ward-selector-title" data-i18n="selectWard">Select a ward</h3></div><span data-i18n="selected">Selected</span></div>
+              <div class="ward-selector" id="wardSelector" aria-label="Location selection buttons"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="report-section" id="report">
+          <div class="report-intro"><p class="eyebrow"><i></i><span data-i18n="communityReport">COMMUNITY REPORT</span></p><h2 data-i18n="shareSeeing">Share what you’re seeing.</h2><p data-i18n="reportPrivacy">Your report helps flag patterns early. Do not include names, phone numbers or exact home addresses.</p></div>
+          <form class="report-form" id="reportForm">
+            <div class="form-top"><h3 data-i18n="formTitle">Report a health or water issue</h3><span data-i18n="step">Step 1 of 1</span></div>
+            <div class="field-grid">
+              <label><span data-i18n="state">State</span><select id="state" required></select></label>
+              <label><span data-i18n="city">City</span><select id="city" required></select></label>
+              <label><span data-i18n="peopleAffected">People affected</span><input id="people" type="text" inputmode="numeric" pattern="[0-9०-९]+" value="1" required /></label>
+              <label><span data-i18n="areaPincode">Area pincode</span> <span class="optional" data-i18n="optional">optional</span><input id="pincode" type="text" inputmode="numeric" pattern="[0-9०-९]{6}" maxlength="6" data-i18n-placeholder="pincodePlaceholder" placeholder="Example: 110001" /></label>
+              <label><span data-i18n="recentRainfall">Recent rainfall</span><select id="rainfall" required><option value="None" data-i18n="noRain">No rain</option><option value="Low" data-i18n="lowRain">Low rain</option><option value="High" data-i18n="highRain">High rain</option><option value="Heavy" data-i18n="heavyRain" selected>Heavy rain</option></select></label>
+            </div>
+            <details class="add-location"><summary data-i18n="addLocation">Add a state/city for this demo</summary><div><label><span data-i18n="newState">New state</span><input id="newState" type="text" maxlength="60" /></label><label><span data-i18n="newCity">New city</span><input id="newCity" type="text" maxlength="60" /></label><button id="addLocationButton" type="button" data-i18n="addLocationButton">Add location</button></div></details>
+            <fieldset><legend><span data-i18n="symptoms">Symptoms observed</span> <span data-i18n="selectAll">select all that apply</span></legend><div class="chips"><label><input type="checkbox" value="Diarrhea" checked /><span data-i18n="diarrhea">Diarrhea</span></label><label><input type="checkbox" value="Vomiting" /><span data-i18n="vomiting">Vomiting</span></label><label><input type="checkbox" value="Stomach pain" /><span data-i18n="stomachPain">Stomach pain</span></label><label><input type="checkbox" value="Fever" /><span data-i18n="fever">Fever</span></label></div></fieldset>
+            <fieldset><legend data-i18n="waterCondition">Water condition</legend><div class="chips"><label><input type="radio" name="water" value="none" checked /><span data-i18n="noConcern">No concern noticed</span></label><label><input type="radio" name="water" value="dirty" /><span data-i18n="muddy">Muddy / smelly water</span></label><label><input type="radio" name="water" value="flood" /><span data-i18n="flooding">Flooding / leakage</span></label></div></fieldset>
+            <label><span data-i18n="anythingElse">Anything else to share?</span> <span class="optional" data-i18n="optional">optional</span><textarea id="notes" rows="2" data-i18n-placeholder="notesPlaceholder" placeholder="Example: Water looks brown near the public tap."></textarea></label>
+            <div class="report-footer"><span class="offline-status"><i></i><span data-i18n="offlineReady">Offline-ready · reports queue securely when needed</span></span><span class="verification-summary" id="verificationSummary" data-i18n="unverifiedReport">Unverified community report</span></div>
+            <button class="button primary submit" type="submit"><span data-i18n="submitReport">Continue to verification</span> <span>→</span></button>
+          </form>
+        </section>
+
+        <section class="response-section" id="response">
+          <div class="response-heading"><p class="eyebrow"><i></i><span data-i18n="responseCenter">RESPONSE CENTER</span></p><h2><span data-i18n="clearSteps">Clear next steps,</span> <em data-i18n="notGuesswork">not guesswork.</em></h2><p data-i18n="recommendedActions">Recommended actions are a checklist for health-worker verification and local public-health response.</p></div>
+          <div class="response-layout"><div class="response-card critical"><span class="risk-tag" id="responseRisk">CRITICAL RISK</span><h3 id="responseArea">Patna, Bihar</h3><p id="responseDesc">Verify the signal and begin local response within 24 hours.</p><div class="response-plan-layout"><div><div class="ai-plan-note"><span aria-hidden="true">✦</span><div><strong id="aiPlanTitle">AI-assisted action plan</strong><small id="aiPlanCopy">Updates as the area’s risk signals change.</small></div></div><div id="actionList" class="action-list"></div></div><aside class="response-ward-panel"><p id="responseWardSelectorTitle">Change location</p><div id="responseWardSelector" aria-label="Select a location for the action plan"></div></aside></div></div><div class="explain-card" id="explainPanel"><div class="panel-header"><h3 id="whyTitle">What is driving the risk?</h3><span id="explainable">EXPLAINABLE</span></div><p id="explainCopy">NeerSath uses simple, transparent rules. Every signal can be reviewed by a person.</p><div id="signalBars"></div><p class="human-review" id="humanReview">◎ Always verify with local health records, field checks and water testing before public action.</p></div></div>
+        </section>
+      </main>
+      <footer>
+        <span class="brand"><span class="brand-mark">⌁</span> NeerSath</span>
+        <span data-i18n="footerHuman">Built for earlier action, with human oversight.</span>
+        <span class="footer-contact"><strong data-i18n="contactUs">Contact us</strong><a href="tel:+919876543210">+91 98765 43210</a><a href="mailto:help@neersath.example">help@neersath.example</a></span>
+      </footer>
+    </div>
+    <dialog class="verify-dialog" id="verifyDialog" aria-labelledby="verifyTitle">
+      <div class="verify-dialog-head"><span class="verified-mark">✓</span><button class="close-dialog" id="closeVerify" type="button" aria-label="Close">×</button></div>
+      <p class="eyebrow"><i></i><span data-i18n="verification">REPORT VERIFICATION</span></p>
+      <h2 id="verifyTitle" data-i18n="verifyTitle">Help us identify trusted reports.</h2>
+      <p data-i18n="verifyCopy">Verified reports help health teams prioritize follow-up. NeerSath never asks you to type, store, or share your DigiLocker ID.</p>
+      <div class="verify-safe"><span>⌾</span><div><strong data-i18n="safeByDesign">Safe by design</strong><br><span data-i18n="safeCopy">A real connection uses official DigiLocker consent and returns only a verification status—not your ID or documents.</span></div></div>
+      <div class="verify-options">
+        <button class="verify-option" id="demoVerify" type="button"><span class="verify-option-icon">✓</span><span><strong data-i18n="connectDemo">Demo verification</strong><small data-i18n="demoOnly">Adds a demo badge only. No government identity or personal data is checked.</small></span><b>→</b></button>
+        <button class="skip-verify" id="skipVerify" type="button" data-i18n="skipVerify">Continue without verification</button>
+      </div>
+      <p class="verify-note" data-i18n="verifyNote">A verification badge improves report triage; it does not make a report medically confirmed.</p>
+    </dialog>
+    <section class="help-drawer" id="helpDrawer" aria-label="How NeerSath works"><button id="helpToggle" type="button"><span>?</span><span data-i18n="howItWorks">How NeerSath works</span></button><div class="help-content"><button class="help-close" id="helpClose" type="button">×</button><p class="eyebrow"><i></i><span data-i18n="quickGuide">QUICK GUIDE</span></p><h2 data-i18n="helpTitle">Signals first. Human review always.</h2><ol><li data-i18n="help1">Report area-level symptoms or water concerns.</li><li data-i18n="help2">NeerSath combines transparent risk signals.</li><li data-i18n="help3">Health workers verify before any public response.</li></ol></div></section>
+    <section class="theme-toggle" aria-label="Theme settings"><button id="themeButton" type="button" aria-pressed="false"><span id="themeIcon">◐</span><span id="themeLabel">Dark theme</span><span class="theme-tooltip" id="themeHint">Click to change theme</span></button></section>
+    <section class="voice-reader" aria-label="English voice reader"><button id="voiceButton" type="button" aria-pressed="false"><span id="voiceIcon">🔊</span><span id="voiceLabel">Read page aloud</span><span class="voice-tooltip" id="voiceHint">Reads this screen in English</span></button><button id="voiceStop" class="voice-stop" type="button" aria-label="Stop reading" hidden>■</button></section>
+    <p class="sr-only" id="voiceStatus" aria-live="polite"></p>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
